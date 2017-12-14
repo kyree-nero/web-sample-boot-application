@@ -66,11 +66,11 @@ public class PersistedExpressionVoter implements AccessDecisionVoter<FilterInvoc
 		
 		List<AuthExpression> authExpressions = authorizationService.findAll();
 		for(AuthExpression authExpression : authExpressions) {
-//			System.out.println("------");
-//			System.out.println("url=" + url);
-//			System.out.println("resource="+authExpression.getResource());
+			System.out.println("------");
+			System.out.println("url=" + url);
+			System.out.println("resource="+authExpression.getResource());
 			if(url.matches(authExpression.getResource())) {
-//				System.out.println("found");
+				System.out.println("found");
 				return authExpression;
 			}
 		}

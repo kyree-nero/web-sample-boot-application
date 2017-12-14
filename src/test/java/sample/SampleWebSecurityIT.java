@@ -5,16 +5,15 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.mock.web.MockHttpSession;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.web.ServletTestExecutionListener;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -23,12 +22,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 		{
 			DependencyInjectionTestExecutionListener.class, 
 			WithSecurityContextTestExecutionListener.class, 
-			ServletTestExecutionListener.class
+			ServletTestExecutionListener.class, 
+			SqlScriptsTestExecutionListener.class
 		}
 )
+
 public class SampleWebSecurityIT extends AbstractSecurityWebMvcIT{
-	@Autowired MockMvc mockMvc;
-	
+	@Autowired JdbcOperations jdbcOperations;
 	@Test public void testCSRF()throws Exception {
 		
 		mockMvc
@@ -55,6 +55,7 @@ public class SampleWebSecurityIT extends AbstractSecurityWebMvcIT{
 	
 	@WithMockUser(value="user", roles="USERS")
 	@Test public void securedRequest() throws Exception{
+		System.out.println(jdbcOperations.queryForObject("select count(*) FROM AUTH_EXPR" , Integer.class));
 		MvcResult result = mockMvc.perform(
 				MockMvcRequestBuilders.get("/sample/0", new Object[] {})
 				.accept(MediaType.APPLICATION_JSON)
