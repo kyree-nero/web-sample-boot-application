@@ -15,7 +15,7 @@ import sample.web.controllers.SampleControllerAdvice;
 import sample.web.controllers.SampleRestController;
 
 @Configuration
-//@EnableWebMvc
+@EnableWebMvc
 @ComponentScan(basePackageClasses= {
 		SampleValidator.class,
 		SampleControllerAdvice.class, 
@@ -24,6 +24,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 		registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
 		registry.addResourceHandler("/**").addResourceLocations("/");

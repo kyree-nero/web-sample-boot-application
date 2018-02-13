@@ -51,6 +51,7 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
 		web.ignoring()
 		.antMatchers("/resources/js/**")
 		.antMatchers("/resources/images/**")
+		//.antMatchers("/resources/html/**")
 		;
 	}
 	

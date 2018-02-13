@@ -89,7 +89,7 @@ public class PreAuthenticatedLocalTestFilter extends OncePerRequestFilter{
 				
 				session.setAttribute("security_context", securityContext);
 				
-				response.sendRedirect(request.getContextPath());
+				response.sendRedirect(request.getContextPath() + "/resources/html/app.html");
 			}
 				
 		
