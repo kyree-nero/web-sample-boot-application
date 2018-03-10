@@ -49,8 +49,12 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		super.configure(web);
 		web.ignoring()
+		
+		.antMatchers("*.js")
+		.antMatchers("/**.css")
 		.antMatchers("/resources/js/**")
 		.antMatchers("/resources/images/**")
+		.antMatchers("/assets/images/**")
 		//.antMatchers("/resources/html/**")
 		;
 	}
