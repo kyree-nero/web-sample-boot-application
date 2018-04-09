@@ -70,7 +70,7 @@ public class SampleRestControllerIT extends AbstractSecurityWebMvcIT{
 
 
 		MvcResult result = mockMvc.perform(
-				MockMvcRequestBuilders.put("/sample", new Object[] {})
+				MockMvcRequestBuilders.post("/sample", new Object[] {})
 				.with(SecurityMockMvcRequestPostProcessors.csrf())
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(jsonInString)
@@ -101,7 +101,7 @@ public class SampleRestControllerIT extends AbstractSecurityWebMvcIT{
 		
 
 		MvcResult result = mockMvc.perform(
-				MockMvcRequestBuilders.post("/sample", new Object[] {})
+				MockMvcRequestBuilders.put("/sample/0", new Object[] {})
 				.with(SecurityMockMvcRequestPostProcessors.csrf())
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(jsonInString)

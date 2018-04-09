@@ -37,7 +37,7 @@ public class SampleServiceImpl implements SampleService {
 	@Override
 	
 	public Sample findSample(Long id) {
-		SampleEntry sampleEntry =  sampleEntryRepository.findOne(id);
+		SampleEntry sampleEntry =  sampleEntryRepository.getOne(id);
 		Sample sample = new Sample();
 		sample.setContent(sampleEntry.getContent());
 		sample.setId(sampleEntry.getId());
@@ -89,7 +89,7 @@ public class SampleServiceImpl implements SampleService {
 	@Override
 	@Transactional
 	public void remove(Long id) {
-		sampleEntryRepository.delete(id);
+		sampleEntryRepository.deleteById(id);
 		
 	}
 	

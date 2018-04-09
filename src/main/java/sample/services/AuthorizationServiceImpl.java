@@ -16,7 +16,7 @@ public class AuthorizationServiceImpl implements AuthorizationService{
 	
 	@Transactional 
 	public AuthExpression findExpression(String key) {
-		return authExpressionRepository.findOne(key);
+		return authExpressionRepository.getOne(key);
 	}
 
 	@Override
