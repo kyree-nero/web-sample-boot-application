@@ -1,0 +1,1 @@
+ docker build  --tag web-sample-boot-application/db ..

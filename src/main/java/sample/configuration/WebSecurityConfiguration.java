@@ -50,7 +50,7 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
 		super.configure(web);
 		web.ignoring()
 		
-		.antMatchers("*.js")
+		.antMatchers("/**.js")
 		.antMatchers("/**.css")
 		.antMatchers("/resources/js/**")
 		.antMatchers("/resources/images/**")

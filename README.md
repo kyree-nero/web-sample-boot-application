@@ -21,4 +21,6 @@ The following technologies are used.
 
 The project runs in tomcat
 
-Start Page: http://localhost:8080/app/index.html (This assumes you have it running locally)
+Start Page: <http://localhost:8080/app/index.html> (This assumes you have it running locally) 
+ 
+Note.   There is a docker image and scripts for the db in build/docker
