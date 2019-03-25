@@ -1,1 +1,1 @@
-docker exec -i -t db /bin/bash
+docker exec -i -t sampleweb-db /bin/bash

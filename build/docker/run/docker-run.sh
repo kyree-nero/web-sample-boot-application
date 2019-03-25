@@ -1,1 +1,1 @@
-docker run --name db -p 3306:3306 web-sample-boot-application/db:latest
+docker-compose -f ../docker-compose.yml --verbose up db

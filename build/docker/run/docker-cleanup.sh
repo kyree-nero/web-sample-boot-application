@@ -1,2 +1,2 @@
-docker stop db
-docker rm db
+docker stop sampleweb-db
+docker rm sampleweb-db

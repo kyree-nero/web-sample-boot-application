@@ -1,1 +1,1 @@
- docker build  --tag web-sample-boot-application/db ..
+docker-compose -f ../docker-compose.yml --verbose build db
