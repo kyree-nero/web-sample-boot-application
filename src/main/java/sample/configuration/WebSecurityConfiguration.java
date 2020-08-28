@@ -1,4 +1,5 @@
 package sample.configuration;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -35,7 +36,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import sample.services.AuthorizationService;
 import sample.web.security.CsrfTokenResponseFilter;
 import sample.web.security.PersistedExpressionVoter;
-import sample.web.security.PreAuthenticatedLocalTestFilter;
 
 @Configuration
 //@EnableWebSecurity
@@ -149,10 +149,9 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
 	@Bean
 	public AccessDecisionManager accessDecisionManager() {
 	    List<AccessDecisionVoter<? extends Object>> decisionVoters 
-	      = Arrays.asList(
-//	        new WebExpressionVoter(),
-//	        new RoleVoter(),
-//	        new AuthenticatedVoter(),
+	      = new ArrayList<AccessDecisionVoter<? extends Object>>();
+	      
+	    decisionVoters.add(
 	        new PersistedExpressionVoter(authorizationService));
 	    UnanimousBased bean = new UnanimousBased(decisionVoters);
 	    bean.setAllowIfAllAbstainDecisions(true);
