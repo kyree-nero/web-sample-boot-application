@@ -58,6 +58,7 @@ public class PreAuthenticatedLocalTestFilter extends OncePerRequestFilter{
 				Set<String> rolenames = mappableRolesRetriever.getMappableAttributes();
 				
 				PrintWriter out = response.getWriter();
+				response.setContentType("text/html");
 				out.println("<html>"
 						+ "		<body>");
 						out.println("<h1>Test Login</h1>");
