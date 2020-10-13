@@ -1,7 +1,7 @@
 kind: Service 
 apiVersion: v1 
 metadata:
-  name: app-db #this is the host name the app container will search for
+  name: app-db-service #this is the host name the app container will search for
 spec:
   # Expose the service on a static port on each node
   # so that we can access the service from outside the cluster 

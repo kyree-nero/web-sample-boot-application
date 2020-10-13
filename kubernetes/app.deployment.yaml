@@ -20,3 +20,6 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 8080
+        env:
+        - name: DB_HOST
+          value: "app-db-service"
