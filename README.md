@@ -21,6 +21,8 @@ To run it from docker...
 			app:latest  
 
 The project has one dynamic page and one static page you can visit to verify the project is working (see links below)
+
+This project has different branches for angular, vue and plain jquery
  
 <h3>urls</h3>
 
