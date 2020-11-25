@@ -115,6 +115,34 @@ public class SampleRestControllerIT extends AbstractSecurityWebMvcIT{
 	}
 	
 	
+
+	@Test public void testUpdateWithAnotherException() throws Exception {
+		
+		long count = sampleEntryRepository.count();
+		
+		Sample requestSample = new Sample();
+		requestSample.setId(0L);
+		requestSample.setContent("bad-update");
+		requestSample.setVersion(0L);
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonInString = mapper.writeValueAsString(requestSample);
+
+		
+
+		MvcResult result = mockMvc.perform(
+				MockMvcRequestBuilders.put("/sample/0", new Object[] {})
+				.with(SecurityMockMvcRequestPostProcessors.csrf())
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(jsonInString)
+				.accept(MediaType.APPLICATION_JSON))
+				
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect(MockMvcResultMatchers.status().isBadRequest())
+				.andExpect(MockMvcResultMatchers.jsonPath("errors", Matchers.not(Matchers.empty())))
+				.andReturn();
+	}
+	
+	
 	@Test public void testRemove() throws Exception {
 		long count = sampleEntryRepository.count();
 		

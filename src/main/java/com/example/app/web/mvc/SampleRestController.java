@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
+import org.springframework.validation.SmartValidator;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.example.app.domain.Sample;
-import com.example.app.domain.validator.SampleValidator;
 import com.example.app.services.SampleService;
 
 @RestController
 public class SampleRestController implements WebMvcConfigurer {
 
 	@Autowired SampleService sampleService;
-	@Autowired SampleValidator sampleValidator;
+	//@Autowired SampleValidator sampleValidator;
+	@Autowired SmartValidator sampleValidator;
 	
 	@GetMapping(path = "/sample", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody

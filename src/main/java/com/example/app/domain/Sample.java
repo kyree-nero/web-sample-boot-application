@@ -1,7 +1,12 @@
 package com.example.app.domain;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 public class Sample{
 	private Long id;
+	@NotBlank
+	@Pattern(regexp = "^[A-Za-z0-9]+$", message= "characters must be alphanumeric or space")
 	private String content;
 	private Long version;
 	
