@@ -38,4 +38,10 @@ remove it
 	docker rm app
 	docker rm db
 	
-	
+<h3>the ui</h3>
+
+	There is a simple angular ui and a vue ui to this application just showing the normal crud operations.  Whichever one I've worked on latest will be in the app  
+	You can find the code for them in separate npm projects.  
+	See web-sample-boot-application-ui-angular  
+	See web-sample-boot-application-ui-vue  
+		
