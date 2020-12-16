@@ -21,6 +21,8 @@ To run it from docker...
 			app:latest  
 
 The project has one dynamic page and one static page you can visit to verify the project is working (see links below)
+
+This project has different branches for angular, vue and plain jquery
  
 <h3>urls</h3>
 
@@ -36,4 +38,10 @@ remove it
 	docker rm app
 	docker rm db
 	
-	
+<h3>the ui</h3>
+
+	There is a simple angular ui and a vue ui to this application just showing the normal crud operations.  Whichever one I've worked on latest will be in the app  
+	You can find the code for them in separate npm projects.  
+	See web-sample-boot-application-ui-angular  
+	See web-sample-boot-application-ui-vue  
+		
