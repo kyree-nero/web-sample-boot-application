@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:11
 MAINTAINER kyree
 RUN mkdir -p /usr/src/myapp
 ADD target/*.jar /usr/src/myapp/app.jar
