@@ -80,6 +80,12 @@ public class SampleEntry {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "SampleEntry [id=" + id + ", content=" + content + ", version=" + version + "]";
+	}
+	
 	
 	
 }

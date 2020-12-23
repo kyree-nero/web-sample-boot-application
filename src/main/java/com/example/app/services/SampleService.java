@@ -1,9 +1,15 @@
 package com.example.app.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.audit.AuditEvent;
+import org.springframework.boot.actuate.audit.AuditEventRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,9 +19,11 @@ import com.example.app.persistence.entities.SampleEntry;
 @Service
 
 public class SampleService  {
-
+	public static final String AUDIT_TYPE = "Sample";
 	@Autowired com.example.app.persistence.dao.SampleDao dao;
 	@Autowired com.example.app.persistence.repositories.SampleEntryRepository sampleEntryRepository;
+	@Autowired AuditEventRepository auditEventRepository;
+	@Autowired UserService userService;
 	
 	
 	
@@ -56,35 +64,61 @@ public class SampleService  {
 		return response;
 		
 	}
-	
+
 
 	
 	@Transactional
 	public Sample save(Sample sample) {
-		SampleEntry sampleEntry = null;
-		if(sample.getId() == null) {
-			sampleEntry = new SampleEntry();
+		Map<String, Object> data = new HashMap<String, Object>();
+		
+		
+		data.put("operation", "save");
+		data.put("target", sample);
+		AuditEvent auditEvent = new AuditEvent(userService.getUsername(), AUDIT_TYPE, data);
+		
+		try {
 			
-		}else {
-			sampleEntry =  sampleEntryRepository.findByIdAndVersion(sample.getId(), sample.getVersion());
-			if(sampleEntry == null) {
-				throw new IllegalArgumentException("SampleEntry not found");
+			SampleEntry sampleEntry = null;
+			if(sample.getId() == null) {
+				sampleEntry = new SampleEntry();
+			}else {
+				sampleEntry =  sampleEntryRepository.findByIdAndVersion(sample.getId(), sample.getVersion());
+				if(sampleEntry == null) {
+					throw new IllegalArgumentException("SampleEntry not found");
+				}
 			}
+			sampleEntry.setContent(sample.getContent());
+			sampleEntry = sampleEntryRepository.save(sampleEntry);
+			Sample sampleResponse = new Sample();
+			sampleResponse.setId(sampleEntry.getId());
+			sampleResponse.setContent(sampleEntry.getContent());
+			sampleResponse.setVersion(sampleEntry.getVersion());
+			data.put("id", sampleEntry.getId());
+			return sampleResponse;
+		}catch(Exception e) {
+			data.put("failure", e.getMessage());
+			throw e;
+		}finally {
+			auditEventRepository.add(auditEvent);
 		}
-		sampleEntry.setContent(sample.getContent());
-		sampleEntry = sampleEntryRepository.save(sampleEntry);
-		Sample sampleResponse = new Sample();
-		sampleResponse.setId(sampleEntry.getId());
-		sampleResponse.setContent(sampleEntry.getContent());
-		sampleResponse.setVersion(sampleEntry.getVersion());
-		return sampleResponse;
 	}
 
 	
 	@Transactional
 	public void remove(Long id) {
-		sampleEntryRepository.deleteById(id);
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("operation", "remove");
+		data.put("target", id);
+		AuditEvent auditEvent = new AuditEvent(userService.getUsername(), AUDIT_TYPE, data);
 		
+		try {
+			sampleEntryRepository.deleteById(id);
+		}catch(Exception e) {
+			data.put("failure", e.getMessage());
+			throw e;
+		}finally {
+			auditEventRepository.add(auditEvent);
+		}
 	}
 	
 	
