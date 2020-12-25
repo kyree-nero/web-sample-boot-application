@@ -1,4 +1,4 @@
-package com.example.app.web.mvc;
+package com.example.app.sample;
 
 import java.util.List;
 
@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.example.app.domain.Sample;
-import com.example.app.services.SampleService;
 
 @RestController
 public class SampleRestController implements WebMvcConfigurer {

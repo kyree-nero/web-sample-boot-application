@@ -13,11 +13,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.test.context.support.WithMockUser;
 
+import com.example.app.audit.AppAuditEventRepository;
 import com.example.app.audit.AuditEventConverter;
 import com.example.app.audit.AuditingService;
 import com.example.app.persistence.entities.AppAuditEvent;
 import com.example.app.persistence.entities.AppAuditEventData;
-import com.example.app.persistence.repositories.AppAuditEventRepository;
 
 
 public class AuditRepositoryIT extends AbstractWebMvcIT {

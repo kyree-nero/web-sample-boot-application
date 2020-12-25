@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.app.audit.AuthExpressionRepository;
 import com.example.app.persistence.entities.AuthExpression;
-import com.example.app.persistence.repositories.AuthExpressionRepository;
 
 @Service
 public class AuthorizationService {

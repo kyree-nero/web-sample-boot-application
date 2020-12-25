@@ -1,4 +1,4 @@
-package com.example.app.persistence.repositories;
+package com.example.app.audit;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

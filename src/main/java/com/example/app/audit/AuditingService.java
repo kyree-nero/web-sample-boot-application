@@ -13,8 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.app.persistence.entities.AppAuditEvent;
 import com.example.app.persistence.entities.AppAuditEventData;
-import com.example.app.persistence.repositories.AppAuditEventDataRepository;
-import com.example.app.persistence.repositories.AppAuditEventRepository;
 
 @Service
 public class AuditingService implements AuditEventRepository{

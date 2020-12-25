@@ -1,4 +1,4 @@
-package com.example.app.services;
+package com.example.app.sample;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,15 +14,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.app.domain.Sample;
-import com.example.app.persistence.entities.SampleEntry;
+import com.example.app.services.UserService;
 import com.example.app.web.mvc.IncorrectObjectVersionException;
 
 @Service
 
 public class SampleService  {
 	public static final String AUDIT_TYPE = "Sample";
-	@Autowired com.example.app.persistence.dao.SampleDao dao;
-	@Autowired com.example.app.persistence.repositories.SampleEntryRepository sampleEntryRepository;
+	@Autowired com.example.app.sample.SampleDao dao;
+	@Autowired com.example.app.sample.SampleEntryRepository sampleEntryRepository;
 	@Autowired AuditEventRepository auditEventRepository;
 	@Autowired UserService userService;
 	

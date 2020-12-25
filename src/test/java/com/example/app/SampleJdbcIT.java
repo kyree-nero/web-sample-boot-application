@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.app.persistence.dao.SampleDao;
+import com.example.app.sample.SampleDao;
 
 
 public class SampleJdbcIT extends AbstractWebMvcIT {
