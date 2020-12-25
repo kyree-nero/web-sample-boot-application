@@ -191,7 +191,7 @@ public class SampleRestControllerIT extends AbstractSecurityWebMvcIT{
 				
 	}
 	
-	//@Ignore @Test 
+	@Test 
 	public void testUpdateWithBadVersion() throws Exception {
 		
 		long count = sampleEntryRepository.count();
@@ -213,8 +213,7 @@ public class SampleRestControllerIT extends AbstractSecurityWebMvcIT{
 				.accept(MediaType.APPLICATION_JSON))
 				
 				.andDo(MockMvcResultHandlers.print())
-		.andExpect(MockMvcResultMatchers.status().isOk())
-		.andExpect(MockMvcResultMatchers.jsonPath("id", Matchers.notNullValue()))
+		.andExpect(MockMvcResultMatchers.status().isBadRequest())
 		.andReturn();
 		
 		long posttCount = sampleEntryRepository.count();
@@ -231,13 +230,13 @@ public class SampleRestControllerIT extends AbstractSecurityWebMvcIT{
 		Assert.assertEquals("user", auditEvent.getPrincipal());
 		Assert.assertTrue(auditEvent.getTimestamp().isAfter(startInstant));
 		Assert.assertEquals(SampleService.AUDIT_TYPE, auditEvent.getType());
-		Assert.assertEquals(3, auditEvent.getData().size());
+		Assert.assertEquals(4, auditEvent.getData().size());
 		
 		Map<String, Object> data= auditEvent.getData();
 		Assert.assertEquals("save",  data.get("operation"));
 		Assert.assertNotNull(data.get("target"));
 		Assert.assertNotNull(data.get("id"));
-		Assert.assertNull(data.get("failure"));
+		Assert.assertEquals("SampleEntry not found",  data.get("failure"));
 	}
 	
 	

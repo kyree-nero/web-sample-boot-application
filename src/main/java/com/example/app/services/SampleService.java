@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.app.domain.Sample;
 import com.example.app.persistence.entities.SampleEntry;
+import com.example.app.web.mvc.IncorrectObjectVersionException;
 
 @Service
 
@@ -83,8 +84,10 @@ public class SampleService  {
 				sampleEntry = new SampleEntry();
 			}else {
 				sampleEntry =  sampleEntryRepository.findByIdAndVersion(sample.getId(), sample.getVersion());
+				
 				if(sampleEntry == null) {
-					throw new IllegalArgumentException("SampleEntry not found");
+					data.put("id", sample.getId());
+					throw new IncorrectObjectVersionException("SampleEntry not found");
 				}
 			}
 			sampleEntry.setContent(sample.getContent());
@@ -96,6 +99,7 @@ public class SampleService  {
 			data.put("id", sampleEntry.getId());
 			return sampleResponse;
 		}catch(Exception e) {
+			e.printStackTrace();
 			data.put("failure", e.getMessage());
 			throw e;
 		}finally {
