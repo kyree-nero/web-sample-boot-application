@@ -17,7 +17,7 @@ import com.example.app.audit.AuditingService;
 
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.MOCK)
 @ActiveProfiles("test")
-@TestPropertySource("/application-test.properties")
+@TestPropertySource("/config/application-test.yml")
 @Sql({
 	"/META-INF/data/h2/drops.sql", 
 	"/META-INF/data/h2/tables.sql", 
