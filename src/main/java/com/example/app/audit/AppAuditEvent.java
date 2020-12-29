@@ -1,4 +1,4 @@
-package com.example.app.persistence.entities;
+package com.example.app.audit;
 
 import java.io.Serializable;
 import java.util.ArrayList;

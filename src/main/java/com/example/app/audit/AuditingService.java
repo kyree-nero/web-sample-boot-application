@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.app.persistence.entities.AppAuditEvent;
-import com.example.app.persistence.entities.AppAuditEventData;
-
 @Service
 public class AuditingService implements AuditEventRepository{
 	

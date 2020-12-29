@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.example.app.persistence.entities.AppAuditEvent;
-
 @Repository
 public interface AppAuditEventRepository  extends JpaRepository<AppAuditEvent, Long>{
 	//public List<AppAuditEvent> findByPrincipalAndTypeAndInstantAsNumGreaterThanEqual(String principal, String type, long instant);

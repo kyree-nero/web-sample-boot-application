@@ -4,9 +4,6 @@ import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import com.example.app.persistence.entities.AppAuditEvent;
-import com.example.app.persistence.entities.AppAuditEventData;
-
 @Component
 public class AppAuditEventConverter implements Converter<AuditEvent, AppAuditEvent>{
 
