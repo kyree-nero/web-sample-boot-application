@@ -35,7 +35,7 @@ public class AppAuditEvent implements Serializable{
 	private String type;
 
 
-	@OneToMany(mappedBy = "appAuditEvent", fetch = FetchType.EAGER,
+	@OneToMany(mappedBy = "appAuditEvent", //fetch = FetchType.EAGER,
     cascade = CascadeType.ALL)
 	private List<AppAuditEventData> data = new ArrayList<AppAuditEventData>();
 
