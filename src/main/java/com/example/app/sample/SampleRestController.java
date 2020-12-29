@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.example.app.domain.Sample;
-
 @RestController
 public class SampleRestController implements WebMvcConfigurer {
 

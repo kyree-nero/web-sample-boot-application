@@ -1,4 +1,4 @@
-package com.example.app.services;
+package com.example.app.web.security;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.app.audit.AuthExpressionRepository;
-import com.example.app.persistence.entities.AuthExpression;
 
 @Service
 public class AuthorizationService {

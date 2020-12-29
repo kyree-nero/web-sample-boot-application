@@ -32,7 +32,7 @@ import org.springframework.security.web.authentication.preauth.j2ee.J2eePreAuthe
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.example.app.services.AuthorizationService;
+import com.example.app.web.security.AuthorizationService;
 import com.example.app.web.security.CsrfTokenResponseFilter;
 import com.example.app.web.security.PersistedExpressionVoter;
 

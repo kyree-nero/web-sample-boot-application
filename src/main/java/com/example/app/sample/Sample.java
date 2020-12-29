@@ -1,4 +1,4 @@
-package com.example.app.domain;
+package com.example.app.sample;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;

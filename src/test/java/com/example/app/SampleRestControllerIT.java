@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.example.app.domain.Sample;
+import com.example.app.sample.Sample;
 import com.example.app.sample.SampleEntryRepository;
 import com.example.app.sample.SampleService;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.app.domain.Sample;
 import com.example.app.services.UserService;
 import com.example.app.web.mvc.IncorrectObjectVersionException;
 

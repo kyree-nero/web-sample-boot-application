@@ -12,9 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 
-import com.example.app.persistence.entities.AuthExpression;
-import com.example.app.services.AuthorizationService;
-
 public class PersistedExpressionVoter implements AccessDecisionVoter<FilterInvocation>{
 	
 	private AuthorizationService authorizationService;

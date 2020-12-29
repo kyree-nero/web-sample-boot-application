@@ -1,4 +1,4 @@
-package com.example.app.persistence.entities;
+package com.example.app.web.security;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
