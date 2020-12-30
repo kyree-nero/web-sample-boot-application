@@ -39,6 +39,9 @@ import com.example.app.web.security.PersistedExpressionVoter;
 @Configuration
 //@EnableWebSecurity
 public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
+	public static final String ROLE_USERS = "USERS";
+	public static final String ROLE_MONITORS = "MONITORS";
+	
 	@Autowired AuthorizationService authorizationService;
 	@Autowired Environment environment;
 	@Autowired @Qualifier("preAuthenticatedLocalTestFilter") OncePerRequestFilter preAuthenticatedLocalTestFilter;
@@ -202,7 +205,8 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
 	@Bean SimpleMappableAttributesRetriever mappableRolesRetriever() {
 		SimpleMappableAttributesRetriever bean = new SimpleMappableAttributesRetriever();
 		HashSet<String> roles = new HashSet<String>();
-		roles.add("USERS");
+		roles.add(ROLE_USERS);
+		roles.add(ROLE_MONITORS);
 		bean.setMappableAttributes(roles);
 		return bean;
 	}

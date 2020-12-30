@@ -12,11 +12,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import com.example.app.configuration.WebSecurityConfiguration;
+
 public class HealthCheckIT extends AbstractSecurityWebMvcIT{
 	@Autowired MockMvc mockMvc;
 	
-	@WithMockUser(value="user", roles="USERS")
-	@Test public void test() throws Exception{
+	@WithMockUser(value="user", roles=WebSecurityConfiguration.ROLE_MONITORS)
+	@Test public void livenessTest() throws Exception{
 		MvcResult result = mockMvc.perform(
 				MockMvcRequestBuilders.get("/actuator/health", new Object[] {})
 				.with(SecurityMockMvcRequestPostProcessors.csrf())
@@ -28,6 +30,23 @@ public class HealthCheckIT extends AbstractSecurityWebMvcIT{
 				.andDo(MockMvcResultHandlers.print())
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andExpect(MockMvcResultMatchers.jsonPath("status", Matchers.equalTo("UP")))
+		.andReturn();
+	}
+	
+	@WithMockUser(value="user", roles=WebSecurityConfiguration.ROLE_MONITORS)
+	@Test public void readinessTest() throws Exception{
+		MvcResult result = mockMvc.perform(
+				MockMvcRequestBuilders.get("/monitor", new Object[] {})
+				.with(SecurityMockMvcRequestPostProcessors.csrf())
+				
+				.accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON)
+				
+		)
+				.andDo(MockMvcResultHandlers.print())
+		.andExpect(MockMvcResultMatchers.status().isOk())
+		.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.aMapWithSize(1)))
+		.andExpect(MockMvcResultMatchers.jsonPath("$['count']", Matchers.equalTo("2")))
 		.andReturn();
 	}
 }

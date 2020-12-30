@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import com.example.app.configuration.WebSecurityConfiguration;
+
 
 public class SampleWebSecurityIT extends AbstractSecurityWebMvcIT{
 	@Autowired JdbcOperations jdbcOperations;
@@ -45,7 +47,7 @@ public class SampleWebSecurityIT extends AbstractSecurityWebMvcIT{
 	    		.string("X-XSS-Protection", "1; mode=block"));
 	}
 	
-	@WithMockUser(value="user", roles="USERS")
+	@WithMockUser(value="user", roles=WebSecurityConfiguration.ROLE_USERS)
 	@Test public void securedRequest() throws Exception{
 		System.out.println(jdbcOperations.queryForObject("select count(*) FROM AUTH_EXPR" , Integer.class));
 		MvcResult result = mockMvc.perform(
@@ -59,7 +61,7 @@ public class SampleWebSecurityIT extends AbstractSecurityWebMvcIT{
 	}
 	
 
-	@WithMockUser(value="user", roles="USERS")
+	@WithMockUser(value="user", roles=WebSecurityConfiguration.ROLE_USERS)
 	@Test public void securedRequestLogout() throws Exception{
 		MockHttpSession session = new MockHttpSession();
 		Assert.assertFalse(session.isInvalid());

@@ -18,6 +18,7 @@ import com.example.app.audit.AppAuditEventData;
 import com.example.app.audit.AppAuditEventRepository;
 import com.example.app.audit.AuditEventConverter;
 import com.example.app.audit.AuditingService;
+import com.example.app.configuration.WebSecurityConfiguration;
 
 
 public class AuditRepositoryIT extends AbstractWebMvcIT {
@@ -25,7 +26,7 @@ public class AuditRepositoryIT extends AbstractWebMvcIT {
 	@Autowired AppAuditEventRepository auditEventRepository;
 	@Autowired AuditEventConverter auditEventConverter;
 	
-	@WithMockUser(value="user", roles="USERS")
+	@WithMockUser(value="user", roles=WebSecurityConfiguration.ROLE_USERS)
 	@Test public void test() {
 		
 		Instant start = Instant.ofEpochMilli(new Date().getTime());
