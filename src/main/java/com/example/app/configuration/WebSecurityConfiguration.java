@@ -40,7 +40,7 @@ import com.example.app.web.security.PersistedExpressionVoter;
 //@EnableWebSecurity
 public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
 	public static final String ROLE_USERS = "USERS";
-	public static final String ROLE_MONITORS = "MONITORS";
+//	public static final String ROLE_MONITORS = "MONITORS";
 	
 	@Autowired AuthorizationService authorizationService;
 	@Autowired Environment environment;
@@ -57,9 +57,11 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
 		.antMatchers("/resources/js/**")
 		.antMatchers("/resources/images/**")
 		.antMatchers("/assets/images/**")
+		
 		//.antMatchers("/resources/html/**")
 		.antMatchers("/css/**")
 		.antMatchers("/js/**")
+		.antMatchers("/actuator/**")
 		
 		;
 	}
@@ -96,7 +98,8 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
 				
 			.and()
 				.authenticationProvider(authenticationProvider())
-				.authorizeRequests().anyRequest().authenticated().accessDecisionManager(accessDecisionManager())
+				.authorizeRequests().anyRequest().authenticated()
+				.accessDecisionManager(accessDecisionManager())
 			.and()
 		      .csrf();
 		;
@@ -206,7 +209,7 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
 		SimpleMappableAttributesRetriever bean = new SimpleMappableAttributesRetriever();
 		HashSet<String> roles = new HashSet<String>();
 		roles.add(ROLE_USERS);
-		roles.add(ROLE_MONITORS);
+//		roles.add(ROLE_MONITORS);
 		bean.setMappableAttributes(roles);
 		return bean;
 	}

@@ -17,7 +17,7 @@ import com.example.app.configuration.WebSecurityConfiguration;
 public class HealthCheckIT extends AbstractSecurityWebMvcIT{
 	@Autowired MockMvc mockMvc;
 	
-	@WithMockUser(value="user", roles=WebSecurityConfiguration.ROLE_MONITORS)
+	//@WithMockUser(value="user", roles=WebSecurityConfiguration.ROLE_MONITORS)
 	@Test public void livenessTest() throws Exception{
 		MvcResult result = mockMvc.perform(
 				MockMvcRequestBuilders.get("/actuator/health", new Object[] {})
@@ -33,10 +33,10 @@ public class HealthCheckIT extends AbstractSecurityWebMvcIT{
 		.andReturn();
 	}
 	
-	@WithMockUser(value="user", roles=WebSecurityConfiguration.ROLE_MONITORS)
+	//@WithMockUser(value="user", roles=WebSecurityConfiguration.ROLE_MONITORS)
 	@Test public void readinessTest() throws Exception{
 		MvcResult result = mockMvc.perform(
-				MockMvcRequestBuilders.get("/monitor", new Object[] {})
+				MockMvcRequestBuilders.get("/actuator/sample-health", new Object[] {})
 				.with(SecurityMockMvcRequestPostProcessors.csrf())
 				
 				.accept(MediaType.APPLICATION_JSON)
@@ -49,4 +49,5 @@ public class HealthCheckIT extends AbstractSecurityWebMvcIT{
 		.andExpect(MockMvcResultMatchers.jsonPath("$['count']", Matchers.equalTo("2")))
 		.andReturn();
 	}
+	
 }

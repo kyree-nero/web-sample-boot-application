@@ -20,6 +20,29 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 8080
+          name: default-node
+        - containerPort: 9001
+          name: management-port
         env:
         - name: DB_HOST
           value: "app-db-service"
+        startupProbe:
+          httpGet:
+            path: /actuator/health
+            port: management-port
+          failureThreshold: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: management-port
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /actuator/sample-health
+            port: management-port
+          initialDelaySeconds: 60
+          periodSeconds: 60
+
+        

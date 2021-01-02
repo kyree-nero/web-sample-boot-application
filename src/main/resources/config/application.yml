@@ -11,7 +11,13 @@ spring:
       use-new-id-generator-mappings: false
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-
+management:
+  server:
+    port: 9001
+  endpoints:
+    web:
+      exposure:
+        include: health,sample-health
 
 
 #management.server.port=9001

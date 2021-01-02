@@ -17,7 +17,10 @@ import com.example.app.audit.AuditingService;
 
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.MOCK)
 @ActiveProfiles("test")
-@TestPropertySource("/config/application-test.yml")
+@TestPropertySource(
+		locations = {"/config/application-test.yml"}, 
+		properties ="management.server.port= " //need this to override management port
+)
 @Sql({
 	"/META-INF/data/h2/drops.sql", 
 	"/META-INF/data/h2/tables.sql", 

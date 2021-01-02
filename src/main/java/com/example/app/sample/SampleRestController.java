@@ -72,13 +72,6 @@ public class SampleRestController implements WebMvcConfigurer {
 		return sampleValidator;
 	}
 	 
-	@GetMapping("/monitor")
-	@ResponseBody 
-	public Map<String, String> monitor(){
-		Long count = sampleService.findCountInDb2();
-		Map<String, String> target = new HashMap<String, String>();
-		target.put("count", count.toString());
-		return target;
-	}
+	
 	
 }
