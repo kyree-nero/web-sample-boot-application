@@ -26,6 +26,16 @@ spec:
         env:
         - name: DB_HOST
           value: "app-db-service"
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: app-db-secret
+              key: APP_DB_USERNAME
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-db-secret
+              key: APP_DB_PASSWORD
         startupProbe:
           httpGet:
             path: /actuator/health
