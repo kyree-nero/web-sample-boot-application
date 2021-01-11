@@ -14,6 +14,8 @@ To run it from docker...
 			app-db:latest   
 	4. Do a clean install from maven  
 	5. Run    docker build -t app -f docker/Dockerfile.app .   
+	  (note if you are making an image for kubernetes use docker build -t app -f docker/Dockerfile.kub.app . )
+	
 	6. Run    docker run \
 			--name=app \
 			--publish=8080:8080  \
@@ -44,4 +46,10 @@ remove it
 	You can find the code for them in separate npm projects.  
 	See web-sample-boot-application-ui-angular  
 	See web-sample-boot-application-ui-vue  
+	
+<h3>https</h3>
+
+keytool -genkeypair -alias app-https -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore app-https.p12 -validity 3650
+
+
 		

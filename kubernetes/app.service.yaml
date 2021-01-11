@@ -6,8 +6,8 @@ spec:
   selector:
     app: app
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 8443
+      targetPort: 8443
   externalTrafficPolicy: Local
   type: LoadBalancer
   

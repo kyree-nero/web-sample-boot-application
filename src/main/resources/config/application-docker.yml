@@ -3,3 +3,6 @@ spring:
     url: jdbc:mysql://${DB_HOST}:3306/sample?useLegacyDatetimeCode=false&serverTimezone=UTC
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+server:
+  ssl:
+    key-store: /app-https-keystore/app-https.p12

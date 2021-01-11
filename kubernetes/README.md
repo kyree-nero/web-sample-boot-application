@@ -4,7 +4,8 @@ Simple Kubernetes
 
 An off-shoot of docker-simple this builds off the docker-simple project and uses it in kubernetes.  
 It assumes you have that docker image in your local repository so if you dont have it... get it.  
-
+	
+	0. kubectl create secret generic app-https-secret --from-file=../keystore/app-https.p12
 	1. Go to root of project  
 	2. kubectl apply -f  .  
 	3. Go to https://localhost:8080  

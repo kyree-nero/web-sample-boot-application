@@ -19,10 +19,14 @@ spec:
         image: app:latest
         imagePullPolicy: Never
         ports:
-        - containerPort: 8080
+        - containerPort: 8443
           name: default-node
         - containerPort: 9001
           name: management-port
+        volumeMounts:
+          - mountPath: "/keystore"
+            name: app-https
+            readOnly: true
         env:
         - name: DB_HOST
           value: "app-db-service"
@@ -40,19 +44,25 @@ spec:
           httpGet:
             path: /actuator/health
             port: management-port
+            scheme: HTTPS
           failureThreshold: 30
           periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /actuator/health
             port: management-port
+            scheme: HTTPS
           initialDelaySeconds: 30
           periodSeconds: 30
         readinessProbe:
           httpGet:
             path: /actuator/sample-health
             port: management-port
+            scheme: HTTPS
           initialDelaySeconds: 60
           periodSeconds: 60
-
+      volumes:
+        - name: app-https
+          secret:
+            secretName: app-https-secret
         
