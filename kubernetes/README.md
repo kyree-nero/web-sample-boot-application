@@ -38,4 +38,15 @@ Install the kubenetes front end and use it... (optional)
 	
 		kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^deployment-controller-token-/{print $1}') | awk '$1=="token:"{print $2}'  
 
+Helpful commands
+
+	Get events by timestamp  
+	
+	kubectl get events  --sort-by='.metadata.creationTimestamp'  
+	
+	Get terminal in running container   
+	
+	kubectl exec --stdin --tty pod-name       -- /bin/bash     	
+	
+	
 	
