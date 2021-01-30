@@ -7,7 +7,7 @@ To run it from docker...
 	1. Change your working directory to the projects root directory  
 	2. docker network create --driver bridge app-net
 	3. Run    docker build -t app-db -f docker/Dockerfile.db .
-	3. Run    docker run \
+	3. Run    docker run -d \
 			--name=app-db  \
 			--publish=3306:3306  \
 			--network app-net  \
@@ -18,7 +18,7 @@ To run it from docker...
 	
 	6. Run    docker run \
 			--name=app \
-			--publish=8080:8080  \
+			--publish=8443:8443  \
 			--network app-net  \
 			app:latest  
 
@@ -28,17 +28,17 @@ This project has different branches for angular, vue and plain jquery
  
 <h3>urls</h3>
 
-static link <http://localhost:8080>
+static link <http://localhost:8443>
 
 
 <h3>other docker commands</h3>
 
 remove it  
 
-	docker stop app
-	docker stop app-db
-	docker rm app
-	docker rm db
+	docker container stop app
+	docker container stop app-db
+	docker container rm app
+	docker container rm db
 	
 <h3>the ui</h3>
 
