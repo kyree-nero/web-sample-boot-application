@@ -2,9 +2,9 @@ This is a simple docker example of a java web project with a supporting db
 
 <h3>Different ways to run it</h3>
 
-	<h5>[docker](./deploy/docker/README.md)</h5>
-	<h5>[kubernetes](./deploy/docker/README.md)</h5>
-	<h5>[kubernetes with helm](./deploy/docker/README.md)</h5>
+<h5>[docker](./deploy/docker/README.md)</h5>  
+<h5>[kubernetes](./deploy/docker/README.md)</h5>  
+<h5>[kubernetes with helm](./deploy/docker/README.md)</h5>  
 
 The project has one dynamic page and one static page you can visit to verify the project is working (see links below)
 
