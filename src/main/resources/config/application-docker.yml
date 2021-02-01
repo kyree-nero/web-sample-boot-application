@@ -5,4 +5,4 @@ spring:
     password: ${DB_PASSWORD}
 server:
   ssl:
-    key-store: /app-https-keystore/app-https.p12
+    key-store: /keystore/app-https.p12

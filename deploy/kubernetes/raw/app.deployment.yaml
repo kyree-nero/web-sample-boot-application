@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: app:latest
+        image: app.k8:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 8443
@@ -24,7 +24,7 @@ spec:
         - containerPort: 9001
           name: management-port
         volumeMounts:
-          - mountPath: "/keystore"
+          - mountPath: "/app-https-keystore"
             name: app-https
             readOnly: true
         env:

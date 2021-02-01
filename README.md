@@ -1,25 +1,10 @@
 This is a simple docker example of a java web project with a supporting db
 
-<h3>How to run it</h3>
-To run it from docker...  
+<h3>Different ways to run it</h3>
 
-	1. Change your working directory to the projects root directory  
-	2. docker network create --driver bridge app-net
-	3. Run    docker build -t app-db -f docker/Dockerfile.db .
-	3. Run    docker run -d \
-			--name=app-db  \
-			--publish=3306:3306  \
-			--network app-net  \
-			app-db:latest   
-	4. Do a clean install from maven  
-	5. Run    docker build -t app -f docker/Dockerfile.app .   
-	  (note if you are making an image for kubernetes use docker build -t app -f docker/Dockerfile.kub.app . )
-	
-	6. Run    docker run \
-			--name=app \
-			--publish=8443:8443  \
-			--network app-net  \
-			app:latest  
+	<h5>(docker)[./deploy/docker/README.md]</h5>
+	<h5>(kubernetes)[./deploy/docker/README.md]</h5>
+	<h5>(kubernetes with helm)[./deploy/docker/README.md]</h5>
 
 The project has one dynamic page and one static page you can visit to verify the project is working (see links below)
 
@@ -32,12 +17,6 @@ static link <http://localhost:8443>
 
 <h3>other docker commands</h3>
 
-remove it  
-
-	docker container stop app
-	docker container stop app-db
-	docker container rm app
-	docker container rm db
 	
 <h3>the ui</h3>
 

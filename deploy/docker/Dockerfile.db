@@ -4,7 +4,7 @@ MAINTAINER kyree
 RUN apt-get update \
   && apt-get install -y vim psmisc
 
-COPY docker/db.sql /docker-entrypoint-initdb.d/db.sql
+COPY deploy/docker/data/db.sql /docker-entrypoint-initdb.d/db.sql
 
 ENV MYSQL_ROOT_PASSWORD password
 

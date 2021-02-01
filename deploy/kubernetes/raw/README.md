@@ -2,15 +2,26 @@ Simple Kubernetes
 
 
 
-An off-shoot of docker-simple this builds off the docker-simple project and uses it in kubernetes.  
-It assumes you have that docker image in your local repository so if you dont have it... get it.  
+This in kubernetes.  
+It assumes you have that docker image (app.k8) in your local repository so if you dont have it... get it by looking at the README in the docker folder.  
 	
-	0. kubectl create secret generic app-https-secret --from-file=../keystore/app-https.p12
+	0. Run this from the directory this README is in
 	1. Go to root of project  
 	2. kubectl apply -f  .  
 	3. Go to https://localhost:8080  
-	
-Note:  You can directly connect with the database by using the specified node port (32306)  
+
+Note:  The database takes some time to come up so be patient.  	
+Note:  You can directly connect with the database by using the specified node port (32306)   
+
+
+How to remove it once its in.
+
+	kubectl delete service app-service  
+	kubectl delete deployment app-deployment 
+	kubectl delete pvc app-https   
+	kubectl delete secret app-https-secret 
+	kubectl delete service app-db-service
+	kubectl delete deployment app-db-deployment 
 
 Note:  Useful commands
 
@@ -19,6 +30,9 @@ Note:  Useful commands
 
 	kubectl get events  --sort-by='.metadata.creationTimestamp'  
 
+How to generate a secret 
+
+	kubectl create secret generic app-https-secret --from-file=../../../keystore/app-https.p12
 
 Install the kubenetes front end and use it... (optional)  
 
