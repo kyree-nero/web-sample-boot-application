@@ -3,8 +3,8 @@ This is a simple docker example of a java web project with a supporting db
 <h3>Different ways to run it</h3>
 
 [docker](deploy/docker/README.md)  
-[kubernetes](deploy/docker/README.md)  
-[kubernetes with helm](deploy/docker/README.md)  
+[kubernetes](deploy/kubernetes/raw/README.md)  
+[kubernetes with helm](deploy/kubernetes/helm/README.md)  
 
 The project has one dynamic page and one static page you can visit to verify the project is working (see links below)
 
