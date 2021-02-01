@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}--app-db-deployment
+  labels:
+    app: app-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-db
+  template:
+    metadata:
+      labels:
+        app: app-db
+    spec:
+      containers:
+      - name: app-db
+        image: app-db:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3306
+        
+

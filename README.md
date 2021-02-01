@@ -1,5 +1,4 @@
-This is a simple docker example of a java web project 
-hosted by an alpine linux distribution
+This is a simple docker example of a java web project with a supporting db
 
 <h3>How to run it</h3>
 To run it from docker...  

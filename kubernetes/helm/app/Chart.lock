@@ -1,0 +1,6 @@
+dependencies:
+- name: app-db
+  repository: file://../app-db
+  version: 0.3.0
+digest: sha256:76da64e600ccd90d342a1234d199806e7b4e83217e72adde5e280e1a8cbb852d
+generated: "2021-01-31T19:28:00.849036-05:00"
