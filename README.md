@@ -9,6 +9,7 @@ This is a simple docker example of a java web project with a supporting db
 The project has one dynamic page and one static page you can visit to verify the project is working (see links below)
 
 This project has different branches for angular, vue and plain jquery
+Its buildable via gradle or maven
  
 <h3>urls</h3>
 

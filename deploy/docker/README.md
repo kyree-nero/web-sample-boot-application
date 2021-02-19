@@ -39,3 +39,7 @@ Stop and Remove
 <h3>urls</h3>
 
 static link <http://localhost:8443>
+
+Note: For now if you are using the gradle build, 
+then uncomment the gradle section (and comment the 
+maven section)

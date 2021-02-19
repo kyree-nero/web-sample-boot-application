@@ -6,3 +6,6 @@
 /bin/
 /helm/
 /.factorypath
+/.gradle/
+/build/
+/.DS_Store
