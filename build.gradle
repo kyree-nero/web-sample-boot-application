@@ -33,8 +33,10 @@ apply plugin: 'io.spring.dependency-management'
 //apply plugin: 'org.springframework.boot.experimental.thin-launcher'
 
 group = 'sample'
+//artifact = 'web-sample-boot-application'
 version = '0.0.1-SNAPSHOT'
-description = 'web-sample-boot-application'
+
+//description = 'web-sample-boot-application'
 
 sourceCompatibility = 11
 
@@ -54,6 +56,7 @@ dependencyManagement {
 
 
 dependencies {
+	//logger.lifecycle("${buildDir}/libs/${description}-${version}.jar")
 	//springVersion = '2.3.2.RELEASE'
 	implementation(
 		platform("org.springframework.boot:spring-boot-dependencies:"+springBootVersion)
@@ -132,8 +135,36 @@ springBoot {
     mainClassName = 'com.example.app.Application'
 }
 
+
 bootJar {
     mainClassName = 'com.example.app.Application'
+   /* doLast(){
+    	logger.lifecycle("xyz")
+    	copy{
+			from '${buildDir}/libs/*'
+			into 'target'
+		}
+		logger.lifecycle("xyz1")
+    }*/
+}
+
+
+
+task copyToTarget(dependsOn: build, type: Copy) {
+	//logger.lifecycle("-- $buildDir/libs/$description-$version.jar")
+	//logger.lifecycle("----   ${x}")
+	//logger.lifecycle("----   ${projectName}")
+	//logger.lifecycle("${buildDir}/libs/${description}-${version}.jar")
+    //from file("${buildDir}/libs/${description}-${version}.jar")
+    
+    
+    	//logger.lifecycle("----   ${description}")
+    	//logger.lifecycle("----   ${projectName}")
+    	from file("${buildDir}/libs/${projectName}-${version}.jar")
+	    into file("target")
+	    
+	    
+   
 }
 
 

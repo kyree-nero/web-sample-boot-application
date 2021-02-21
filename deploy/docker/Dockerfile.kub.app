@@ -2,11 +2,9 @@ FROM openjdk:11
 MAINTAINER kyree
 RUN mkdir -p /usr/src/myapp
 
-#use this when using maven
+#maven will automatically use target.  gradle will also dump the war in target :)
 ADD target/*.jar /usr/src/myapp/app.jar
 
-#use this when using gradle
-#ADD build/libs/*.jar /usr/src/myapp/app.jar
 
 
 WORKDIR /usr/src/myapp
